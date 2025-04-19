@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: model-bridge
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: model-bridge
+  template:
+    metadata:
+      labels:
+        app: model-bridge
+    spec:
+      containers:
+      - name: model-bridge
+        image: jvaghela530/model-bridge:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
